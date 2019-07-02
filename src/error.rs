@@ -89,6 +89,9 @@ impl From<piston_image::ImageError> for RasterError {
             piston_image::ImageError::ImageEnd => {
                 RasterError::Decode(ImageFormat::Jpeg, "ImageEnd".to_string())
             }
+            piston_image::ImageError::InsufficientMemory => {
+                RasterError::Decode(ImageFormat::Jpeg, "InsufficientMemory".to_string())
+            }
         }
     }
 }

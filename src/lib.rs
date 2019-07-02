@@ -85,17 +85,17 @@
 //!
 
 // modules
-pub mod compare;
-pub mod editor;
-pub mod error;
-pub mod filter;
-pub mod interpolate;
-pub mod transform;
 mod blend;
 mod color;
+pub mod compare;
+pub mod editor;
 mod endec;
+pub mod error;
+pub mod filter;
 mod image;
+pub mod interpolate;
 mod position;
+pub mod transform;
 
 // crates
 extern crate gif;
@@ -103,12 +103,11 @@ extern crate image as piston_image;
 extern crate png;
 
 // from rust
-use std::ascii::AsciiExt;
 use std::fs::File;
 use std::path::Path;
 
 // from external crate
-use piston_image::GenericImage;
+use piston_image::GenericImageView;
 
 // from local crate
 use error::{RasterError, RasterResult};
@@ -143,7 +142,8 @@ pub use transform::TransformMode;
 /// ```
 pub fn open(image_file: &str) -> RasterResult<Image> {
     let path = Path::new(image_file);
-    let ext = path.extension()
+    let ext = path
+        .extension()
         .and_then(|s| s.to_str())
         .map_or("".to_string(), |s| s.to_ascii_lowercase());
 
@@ -154,7 +154,8 @@ pub fn open(image_file: &str) -> RasterResult<Image> {
         "gif" => Ok(endec::decode_gif(&file)?),
         "jpg" | "jpeg" => {
             let src = piston_image::open(image_file)?;
-            let (w, h) = src.dimensions();
+            let w = src.width();
+            let h = src.height();
             let mut bytes = Vec::with_capacity((w * h) as usize * 4);
             for y in 0..h {
                 for x in 0..w {
@@ -191,21 +192,21 @@ pub fn open(image_file: &str) -> RasterResult<Image> {
 /// ```
 pub fn save(image: &Image, out: &str) -> RasterResult<()> {
     let path = Path::new(out);
-    let ext = path.extension()
+    let ext = path
+        .extension()
         .and_then(|s| s.to_str())
         .map_or("".to_string(), |s| s.to_ascii_lowercase());
 
     match &ext[..] {
         "gif" => Ok(endec::encode_gif(&image, &path)?),
-        "jpg" | "jpeg" => {
-            piston_image::save_buffer(
-                &path,
-                &image.bytes,
-                image.width as u32,
-                image.height as u32,
-                piston_image::RGBA(8),
-            ).map_err(|_| RasterError::Encode(ImageFormat::Jpeg, "Format".to_string()))
-        }
+        "jpg" | "jpeg" => piston_image::save_buffer(
+            &path,
+            &image.bytes,
+            image.width as u32,
+            image.height as u32,
+            piston_image::RGBA(8),
+        )
+        .map_err(|_| RasterError::Encode(ImageFormat::Jpeg, "Format".to_string())),
         "png" => Ok(endec::encode_png(&image, &path)?),
         _ => Err(RasterError::UnsupportedFormat(ext)),
     }
