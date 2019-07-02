@@ -1,18 +1,18 @@
 //!  A module for encoding/decoding.
 
 // from rust
-use std::path::Path;
 use std::fs::File;
 use std::io::BufWriter;
+use std::path::Path;
 
 // from external crate
 use gif;
 use png;
 
 // from local crate
-use error::{RasterError, RasterResult};
-use Image;
-use ImageFormat;
+use crate::error::{RasterError, RasterResult};
+use crate::Image;
+use crate::ImageFormat;
 
 // Decode GIF
 pub fn decode_gif(image_file: &File) -> RasterResult<Image> {

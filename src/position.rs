@@ -5,7 +5,7 @@
 // from external crate
 
 // from local crate
-use error::RasterResult;
+use crate::error::RasterResult;
 
 /// Enumeration for different anchor positions.
 #[derive(Debug)]

@@ -6,12 +6,12 @@ use std::cmp;
 // from external crate
 
 // from local crate
-use error::RasterResult;
-use Image;
-use Color;
-use interpolate::{resample, InterpolationMode};
-use position::PositionMode;
-use editor::crop;
+use crate::error::RasterResult;
+use crate::Image;
+use crate::Color;
+use crate::interpolate::{resample, InterpolationMode};
+use crate::position::PositionMode;
+use crate::editor::crop;
 
 /// An enum for the various modes that can be used for transforming.
 #[derive(Debug)]

@@ -6,7 +6,7 @@ use std;
 // from external crate
 
 // from local crate
-use error::{RasterError, RasterResult};
+use crate::error::{RasterError, RasterResult};
 
 /// A struct for representing and creating color.
 #[derive(Debug, Clone)]

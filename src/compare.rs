@@ -5,9 +5,9 @@
 // from external crate
 
 // from local crate
-use error::RasterResult;
-use Image;
-use editor::{self, ResizeMode};
+use crate::error::RasterResult;
+use crate::Image;
+use crate::editor::{self, ResizeMode};
 
 /// Compare two images and returns a hamming distance. A value of 0 indicates a likely similar
 /// picture. A value between 1 and 10 is potentially a variation. A value greater than 10 is

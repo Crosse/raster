@@ -97,11 +97,6 @@ pub mod interpolate;
 mod position;
 pub mod transform;
 
-// crates
-extern crate gif;
-extern crate image as piston_image;
-extern crate png;
-
 // from rust
 use std::fs::File;
 use std::path::Path;
@@ -110,20 +105,20 @@ use std::path::Path;
 use piston_image::GenericImageView;
 
 // from local crate
-use error::{RasterError, RasterResult};
+use crate::error::{RasterError, RasterResult};
 
 // re-exports
-pub use blend::BlendMode;
-pub use color::Color;
-pub use editor::ResizeMode;
-pub use filter::BlurMode;
-pub use filter::Orientation;
-pub use image::Histogram;
-pub use image::Image;
-pub use image::ImageFormat;
-pub use interpolate::InterpolationMode;
-pub use position::PositionMode;
-pub use transform::TransformMode;
+pub use crate::blend::BlendMode;
+pub use crate::color::Color;
+pub use crate::editor::ResizeMode;
+pub use crate::filter::BlurMode;
+pub use crate::filter::Orientation;
+pub use crate::image::Histogram;
+pub use crate::image::Image;
+pub use crate::image::ImageFormat;
+pub use crate::interpolate::InterpolationMode;
+pub use crate::position::PositionMode;
+pub use crate::transform::TransformMode;
 
 /// Create an image from an image file.
 ///

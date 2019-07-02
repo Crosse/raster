@@ -6,8 +6,8 @@ use std::collections::HashMap;
 // from external crate
 
 // from local crate
-use error::{RasterError, RasterResult};
-use color::Color;
+use crate::error::{RasterError, RasterResult};
+use crate::color::Color;
 
 /// A struct for easily representing a raster image.
 #[derive(Debug, Clone)]

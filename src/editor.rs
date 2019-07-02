@@ -6,12 +6,12 @@ use std::cmp;
 // from external crate
 
 // from local crate
-use error::{RasterError, RasterResult};
-use blend::{self, BlendMode};
-use Color;
-use Image;
-use position::{Position, PositionMode};
-use transform;
+use crate::error::{RasterError, RasterResult};
+use crate::blend::{self, BlendMode};
+use crate::Color;
+use crate::Image;
+use crate::position::{Position, PositionMode};
+use crate::transform;
 
 /// Blend 2 images into one. The image1 is the base and image2 is the top.
 ///

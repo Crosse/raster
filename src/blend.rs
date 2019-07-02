@@ -6,9 +6,9 @@
 // from external crate
 
 // from local crate
-use error::RasterResult;
-use Image;
-use Color;
+use crate::error::RasterResult;
+use crate::Image;
+use crate::Color;
 
 /// Enumeration for blending modes.
 #[derive(Debug)]

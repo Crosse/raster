@@ -16,12 +16,14 @@ description = "Image processing lib for Rust"
 documentation = "https://docs.rs/raster/"
 homepage = "https://github.com/kosinix/raster"
 repository = "https://github.com/kosinix/raster.git"
+edition = "2018"
 
 [dependencies]
 gif = "0.10"
 png = "0.14"
 
-[dependencies.image]
+[dependencies.piston_image]
+package = "image"
 version = "0.21"
 default-features = false
 features = ["jpeg", "jpeg_rayon"]

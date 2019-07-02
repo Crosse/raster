@@ -6,9 +6,9 @@ use std::cmp;
 // from external crate
 
 // from local crate
-use error::{RasterError, RasterResult};
-use Image;
-use Color;
+use crate::error::{RasterError, RasterResult};
+use crate::Image;
+use crate::Color;
 
 /// An enum for the various modes that can be used for blurring.
 #[derive(Debug)]

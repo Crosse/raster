@@ -10,7 +10,7 @@ use piston_image;
 use png;
 
 // from local crate
-use ImageFormat;
+use crate::ImageFormat;
 
 /// Enumeration of raster's errors.
 #[derive(Debug)]
